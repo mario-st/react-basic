@@ -1,3 +1,5 @@
 
-export {LocalStore} from "./LocalStore";
-export {SessionStore} from "./SessionStore";
+import LocalStore from "./LocalStore";
+import SessionStore from "./SessionStore";
+
+export {LocalStore, SessionStore};

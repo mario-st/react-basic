@@ -6,7 +6,7 @@ export const ERR_TIMEOUT      = "timeout";
 export const ERR_DEFAULT      = "error";
 export const NOT_AUTHORIZED   = "not_authorized";
 
-export class Ajax {
+class Ajax {
 
     constructor (request, dispatcher, timeout) {
         this._req        = request;
@@ -85,3 +85,5 @@ export class Ajax {
     }
 
 }
+
+export default Ajax;

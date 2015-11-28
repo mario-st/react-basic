@@ -4,7 +4,7 @@ import EventEmitter from 'events';
 
 export const EVENT_CHANGE = 'change';
 
-export class Store extends EventEmitter {
+class Store extends EventEmitter {
 
     constructor (dispatcher, register, storage) {
         super();
@@ -85,3 +85,5 @@ export class Store extends EventEmitter {
     }
 
 }
+
+export default Store;

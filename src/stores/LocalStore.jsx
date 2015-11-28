@@ -1,8 +1,8 @@
 "use strict";
 
-import {Store} from '../Store';
+import Store from '../Store';
 
-export class LocalStore extends Store {
+class LocalStore extends Store {
 
     constructor (dispatcher, register) {
         super(dispatcher, register, window.localStorage);
@@ -52,3 +52,5 @@ export class LocalStore extends Store {
     }
 
 }
+
+export default LocalStore;

@@ -1,8 +1,8 @@
 "use strict";
 
-import {Store} from '../Store';
+import Store from '../Store';
 
-export class SessionStore extends Store {
+class SessionStore extends Store {
 
     constructor (dispatcher, register) {
         super(dispatcher, register, window.sessionStorage);
@@ -52,3 +52,5 @@ export class SessionStore extends Store {
     }
 
 }
+
+export default SessionStore;
