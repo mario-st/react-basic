@@ -1,1 +1,0 @@
-{"version":3,"sources":["stores/index.jsx"],"names":[],"mappings":";;;;;;;;;;;;;;;;;QAIQ,UAAU;QAAE,YAAY","file":"stores/index.js","sourcesContent":["\nimport LocalStore from \"./LocalStore\";\nimport SessionStore from \"./SessionStore\";\n\nexport {LocalStore, SessionStore};\n"],"sourceRoot":"/source/"}
