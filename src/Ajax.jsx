@@ -46,22 +46,31 @@ class Ajax {
         return req.timeout(timeout || this._timeout).set('Accept', HEADER_DATA_TYPE);
     }
 
-    _dispatch (key, response) {
+    _dispatch (key, response, err) {
         this._dispatcher.dispatch({
             action: key,
-            data  : response
+            data  : response,
+            err   : err
         });
     }
 
     _dispatchResponse (key) {
         return (err, response) => {
-            if (err && err.timeout === ERR_TIMEOUT) {
-                this._dispatch(ERR_TIMEOUT, response);
-            } else if (response.status === 400) {
+            if (err) {
+                if (err.timeout === ERR_TIMEOUT) {
+                    this._dispatch(ERR_TIMEOUT, response, err);
+                }
+                else {
+                    this._dispatch(ERR_DEFAULT, response, err);
+                }
+            }
+            else if (response.status === 400) {
                 this._dispatch(NOT_AUTHORIZED, response);
-            } else if (!response.ok) {
+            }
+            else if (!response.ok) {
                 this._dispatch(ERR_DEFAULT, response);
-            } else {
+            }
+            else {
                 this._dispatch(key, response);
             }
         };

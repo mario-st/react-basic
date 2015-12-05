@@ -1,6 +1,5 @@
 "use strict";
 
-import request from "superagent";
 import Ajax from './Ajax';
 
 export const LIST_SELECT = 'list_select';
@@ -18,45 +17,30 @@ export const ADD    = 'add';
 export const EDIT   = 'edit';
 export const DELETE = 'delete';
 
-export class Actions {
+export default class Actions {
     constructor (url, request, dispatcher) {
         this._dispatcher = dispatcher;
         this._ajax       = new Ajax(request, dispatcher);
         this._url        = url;
     }
 
-    select (payload) {
-        this._dispatcher.dispatch({ action: LIST_SELECT, data: payload });
-
-        // TODO
-
-    }
-
-    menu (action, payload) {
-        this._dispatcher.dispatch({ action: action, data: payload });
-
-        // TODO
-
+    load (id) {
+        this._dispatcher.dispatch({ action: PENDING_LOAD });
+        this._ajax.get(LOAD, this._url + (id || ""));
     }
 
     add (payload) {
         this._dispatcher.dispatch({ action: PENDING_ADD, data: payload });
-
-        // TODO
-
+        this._ajax.post(ADD, this._url + "create", null, payload);
     }
 
     edit (payload) {
         this._dispatcher.dispatch({ action: PENDING_EDIT, data: payload });
-
-        // TODO
-
+        this._ajax.put(EDIT, this._url + "update", null, payload);
     }
 
-    del (payload) {
-        this._dispatcher.dispatch({ action: PENDING_DELETE, data: payload });
-
-        // TODO
-
+    del (id) {
+        this._dispatcher.dispatch({ action: PENDING_DELETE });
+        this._ajax.del(DELETE, this._url + "delete/" + (id || ""));
     }
 }

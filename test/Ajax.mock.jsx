@@ -1,3 +1,5 @@
+"use strict";
+
 import url from "url";
 
 var parse = (match) => {

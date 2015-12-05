@@ -2,8 +2,8 @@
 
 import expect from "expect";
 import request from "superagent";
-import {Dispatcher} from "flux";
 import mocker from "superagent-mock";
+import {Dispatcher} from "flux";
 import config from "./Ajax.mock";
 import Ajax, {ERR_DEFAULT, ERR_TIMEOUT, HEADER_DATA_TYPE, NOT_AUTHORIZED, TIMEOUT} from "../src/Ajax";
 
