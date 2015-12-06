@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{react-basic node_modules}" />
-    <file url="PROJECT" libraries="{expect.js-DefinitelyTyped, lodash-DefinitelyTyped, node-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{flux-DefinitelyTyped, lodash-DefinitelyTyped, mocha-DefinitelyTyped, node-DefinitelyTyped, react-DefinitelyTyped, react-basic}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
   </component>
 </project>
