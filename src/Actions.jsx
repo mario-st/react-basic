@@ -24,6 +24,10 @@ export default class Actions {
         this._url        = url;
     }
 
+    setUrl (url) {
+        this._url = url;
+    }
+
     load (id) {
         this._dispatcher.dispatch({ action: PENDING_LOAD });
         this._ajax.get(LOAD, this._url + (id || ""));
