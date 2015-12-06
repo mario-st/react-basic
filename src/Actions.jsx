@@ -2,11 +2,6 @@
 
 import Ajax from './Ajax';
 
-export const LIST_SELECT = 'list_select';
-
-export const MENU_EDIT   = 'menu_edit';
-export const MENU_DELETE = 'menu_delete';
-
 export const PENDING_LOAD   = 'pending_load';
 export const PENDING_ADD    = 'pending_add';
 export const PENDING_EDIT   = 'pending_edit';
