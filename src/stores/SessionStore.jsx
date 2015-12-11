@@ -8,6 +8,11 @@ class LocalStore extends Store {
         super(dispatcher, register, window.sessionStorage);
     }
 
+    cleanUp () {
+        this.stored.clear();
+        this.changed = true;
+    }
+
 }
 
 export default LocalStore;

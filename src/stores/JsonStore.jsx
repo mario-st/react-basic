@@ -59,11 +59,6 @@ class SessionStore extends Store {
         }
     }
 
-    cleanUp () {
-        this.stored.clear();
-        this.changed = true;
-    }
-
 }
 
 export default SessionStore;
