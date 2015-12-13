@@ -32,9 +32,10 @@ export default [
          * returns the data
          * @param match array Result of the resolution of the regular expression
          * @param params
+         * @param headers
          */
         fixtures: function (match, params, headers) {
-            let {query, pathname} = parse(match);
+            let {pathname} = parse(match);
             let parts = pathname.split("/");
             let id, index;
 

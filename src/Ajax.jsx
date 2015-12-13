@@ -81,7 +81,13 @@ class Ajax {
         if (pending) {
             pending._callback = () => {
             };
-            pending.abort();
+            try {
+                pending.abort();
+            } catch (err) {
+                if (window.console && console.error) {
+                    console.error(err);
+                }
+            }
             this._pending[ key ] = null;
         }
     }

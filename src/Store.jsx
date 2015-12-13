@@ -1,8 +1,8 @@
 "use strict";
 
-import EventEmitter from 'events';
+import EventEmitter from "events";
 
-export const EVENT_CHANGE = 'change';
+export const EVENT_CHANGE = "change";
 
 class Store extends EventEmitter {
 
