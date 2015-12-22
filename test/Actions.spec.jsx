@@ -33,7 +33,7 @@ describe("Actions", () => {
 
     it("::add", () => {
         let dispatcher = new Dispatcher();
-        let act        = new Actions("https://domain.example/", request, dispatcher);
+        let act        = new Actions("https://domain.example/create", request, dispatcher);
         let hero       = {
             "name"       : "Saitama",
             "description": "Saitama (サイタマ, Saitama) is the main protagonist of OnePunch-Man and the most powerful hero alive."
@@ -81,7 +81,7 @@ describe("Actions", () => {
 
     it("::edit", () => {
         let dispatcher = new Dispatcher();
-        let act        = new Actions("https://domain.example/", request, dispatcher);
+        let act        = new Actions("https://domain.example/update", request, dispatcher);
         let hero       = {
             "_id"        : 1,
             "name"       : "Saitama",
@@ -106,7 +106,7 @@ describe("Actions", () => {
             }
         }));
 
-        act.edit(hero);
+        act.edit(hero._id, hero);
     });
 
     it("::load(1) handle single result", () => {
@@ -133,7 +133,7 @@ describe("Actions", () => {
 
     it("::del", () => {
         let dispatcher = new Dispatcher();
-        let action     = new Actions("https://domain.example/", request, dispatcher);
+        let action     = new Actions("https://domain.example/delete/", request, dispatcher);
         dispatcher.register(handleErrors((payload) => {
             switch (payload.action) {
                 case PENDING_DELETE:

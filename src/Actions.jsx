@@ -3,6 +3,7 @@
 import Ajax from './Ajax';
 
 export const PENDING_LOAD   = 'pending_load';
+export const PENDING_SAVE   = 'pending_save';
 export const PENDING_ADD    = 'pending_add';
 export const PENDING_EDIT   = 'pending_edit';
 export const PENDING_DELETE = 'pending_delete';
@@ -28,18 +29,27 @@ export default class Actions {
         this._ajax.get(LOAD, this._url + (id || ""));
     }
 
-    add (payload) {
-        this._dispatcher.dispatch({ action: PENDING_ADD, data: payload });
-        this._ajax.post(ADD, this._url + "create", null, payload);
+    save (id, payload) {
+        this._dispatcher.dispatch({ action: PENDING_SAVE, data: payload });
+        if (id) {
+            this._ajax.put(ADD, this._url + id, null, payload);
+        } else {
+            this._ajax.post(ADD, this._url, null, payload);
+        }
     }
 
-    edit (payload) {
+    add (payload) {
+        this._dispatcher.dispatch({ action: PENDING_ADD, data: payload });
+        this._ajax.post(ADD, this._url, null, payload);
+    }
+
+    edit (id, payload) {
         this._dispatcher.dispatch({ action: PENDING_EDIT, data: payload });
-        this._ajax.put(EDIT, this._url + "update", null, payload);
+        this._ajax.put(EDIT, this._url, null, payload);
     }
 
     del (id) {
         this._dispatcher.dispatch({ action: PENDING_DELETE });
-        this._ajax.del(DELETE, this._url + "delete/" + (id || ""));
+        this._ajax.del(DELETE, this._url + id);
     }
 }

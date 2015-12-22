@@ -39,6 +39,8 @@ export default [
             let parts = pathname.split("/");
             let id, index;
 
+            console.log(pathname);
+
             switch (pathname) {
                 case "/create":
                     id    = ++this._nextId;
