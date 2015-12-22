@@ -41,7 +41,7 @@ export default class Actions {
         let id = payload._id || payload.id;
         this._dispatcher.dispatch({ action: PENDING_SAVE, data: payload });
         if (id) {
-            this._ajax.put(ADD, this._url + id, null, payload);
+            this._ajax.put(EDIT, this._url + id, null, payload);
         } else {
             this._ajax.post(ADD, this._url, null, payload);
         }
