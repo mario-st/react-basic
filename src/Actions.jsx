@@ -24,12 +24,21 @@ export default class Actions {
         this._url = url;
     }
 
-    load (id) {
-        this._dispatcher.dispatch({ action: PENDING_LOAD });
-        this._ajax.get(LOAD, this._url + (id || ""));
+    upload () {
+        throw new Error("not implemented, yet.");
     }
 
-    save (id, payload) {
+    load (query) {
+        this._dispatcher.dispatch({ action: PENDING_LOAD });
+        if ("object" === query) {
+            this._ajax.get(LOAD, this._url, query);
+        } else {
+            this._ajax.get(LOAD, this._url + query);
+        }
+    }
+
+    save (payload) {
+        let id = payload._id || payload.id;
         this._dispatcher.dispatch({ action: PENDING_SAVE, data: payload });
         if (id) {
             this._ajax.put(ADD, this._url + id, null, payload);
@@ -43,7 +52,8 @@ export default class Actions {
         this._ajax.post(ADD, this._url, null, payload);
     }
 
-    edit (id, payload) {
+    edit (payload) {
+        let id = payload._id || payload.id;
         this._dispatcher.dispatch({ action: PENDING_EDIT, data: payload });
         this._ajax.put(EDIT, this._url, null, payload);
     }

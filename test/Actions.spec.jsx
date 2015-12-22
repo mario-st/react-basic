@@ -106,7 +106,7 @@ describe("Actions", () => {
             }
         }));
 
-        act.edit(hero._id, hero);
+        act.edit(hero);
     });
 
     it("::load(1) handle single result", () => {
